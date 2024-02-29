@@ -1,7 +1,7 @@
-function [SOut,LambdaOut]=Gibbs_sampler(X,A)
+function [SOut,LambdaOut]=Gibbs_sampler(X,A, SNR)
 
 %number of iterations
-Niter=20;
+Niter=10;
 
 %get number of sensors and number of dipoles
 [N,D]=size(A);
@@ -20,7 +20,7 @@ nA = sum(A.^2,1);
 % signals
 
 sigma_s2 = 0.3077; % measured in the data
-sigma_n2 = 0.3077; % SNR = 1
+sigma_n2 = SNR*0.3077; % SNR = 1
 alpha = 1;
 beta = 1;
 Q = zeros(D,Niter);

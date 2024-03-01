@@ -22,7 +22,7 @@ Noise=randn(size(Xs));
 Noise=Noise/norm(Noise,'fro')*norm(Xs,'fro');
 
 %signal to noise ratio
-SNR=1;
+SNR=10;
 
 %generate noisy data according to given SNR
 X=Xs+1/sqrt(SNR)*Noise;
@@ -63,9 +63,9 @@ end
 
 %% Robustness to SNR
 
-Shat=MNE(X(:,id),G,100); 
+Shat=MNE(X(:,id),G,461); 
 figure; trisurf(mesh.f,mesh.v(:,1),mesh.v(:,2),mesh.v(:,3),Shat);
-title(strcat('SNR=',num2str(SNR)));
+%title(strcat('SNR=',num2str(SNR)));
 
 %% L-curve criterion
 

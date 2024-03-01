@@ -22,7 +22,7 @@ Noise=randn(size(Xs));
 Noise=Noise/norm(Noise,'fro')*norm(Xs,'fro');
 
 %signal to noise ratio
-SNR=1;
+SNR=0.1;
 
 %generate noisy data according to given SNR
 X=Xs+1/sqrt(SNR)*Noise;
@@ -39,7 +39,8 @@ title('noisy EEG data','FontSize',18);
 
 new_id = id;
 % 
-[Shat Lhat] = Gibbs_sampler(X(:,new_id),G, SNR);
+[Shat, Lhat] = Gibbs_sampler(X(:,new_id),G, SNR);
+disp(Lhat);
 figure; trisurf(mesh.f,mesh.v(:,1),mesh.v(:,2),mesh.v(:,3),Shat);
 title("Gibbs sampler");
 
@@ -60,6 +61,11 @@ for k=1:length(lambda)
     title(strcat('\lambda=',num2str(lambda(k))));
 end
 
+%% Robustness to SNR
+
+Shat=MNE(X(:,id),G,100); 
+figure; trisurf(mesh.f,mesh.v(:,1),mesh.v(:,2),mesh.v(:,3),Shat(:,k));
+title(strcat('SNR=',num2str(SNR)));
 
 %% L-curve criterion
 

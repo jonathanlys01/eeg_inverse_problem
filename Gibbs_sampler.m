@@ -19,10 +19,10 @@ nA = sum(A.^2,1);
 % use variables sigma_n2 and sigma_s2 for the variances of noise and
 % signals
 
-sigma_s2 = 0.3077; % measured in the data
-sigma_n2 = SNR*0.3077; % SNR = 1
-alpha = 1;
-beta = 1;
+sigma_s2 = 0.3077;
+sigma_n2 = SNR*0.3077; 
+alpha = 1.1;
+beta = 10000;
 Q = zeros(D,Niter);
 S = zeros(D,Niter);
 

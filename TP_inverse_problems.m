@@ -65,7 +65,7 @@ end
 
 Shat=MNE(X(:,id),G,461); 
 figure; trisurf(mesh.f,mesh.v(:,1),mesh.v(:,2),mesh.v(:,3),Shat);
-%title(strcat('SNR=',num2str(SNR)));
+title(strcat('SNR = ',num2str(SNR)));
 
 %% L-curve criterion
 
